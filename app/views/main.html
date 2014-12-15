@@ -1,0 +1,65 @@
+
+
+<div class="row marketing" ng-controller="MainCtrl as mc">
+  
+  <div>
+  <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Número</th>
+            <th>Nome</th>
+            <th>Testes</th>
+            <th>trabalhos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-class="{'bg-warning': mc.checkMedia(aluno.testes)}" ng-repeat="aluno in mc.alunos.alunos">
+            <td>{{aluno.numero}} </td>
+            <td>{{aluno.nome}}</td>
+            <td >{{aluno.trabalhos}}</td>
+            <td>{{aluno.testes}}</td>
+        </tr>
+    </tbody>
+  </table>
+     
+  </div>
+  <div class="container bg-info" style="padding:5px;" ng-repeat="aluno in mc.alunos.alunos">
+    
+    <div class="col-md-5" style="background-color:red;">
+      <div class="pull-left"><span class="text-left">{{aluno.numero}}</span></div>
+      <div >{{aluno.nome}}</div>   
+    </div>
+    <div class="col-md-2" style="background-color:green">
+     testes
+    </div>
+    <div class="col-md-3" style="background-color:yellow"  ng-controller="TrabalhoctrlCtrl as tr">
+      <div class="pull-left" ng-repeat="t in aluno.trabalhos track by $index" >
+         
+          <input  class="text-center"  style='width:2em' type="text" ng-model="t.nota" name="trab"  required>      
+         
+      </div> 
+       <div class="pull-left"> 
+     <!--  <input  class="text-center " style='width:2em' type="text" ng-model="tr.novo" name="novo">  -->
+       <select ng-model="tr.valorSel" ng-options="valor.n for valor in tr.valores"></select>
+       </div>
+      
+      <button class="glyphicon glyphicon-plus pull-right" style="color:green;" ng-click="tr.addTestes(aluno)" >
+      </button>
+      
+    
+    </div>
+    <div class="col-md-2" style="background-color:orange">
+     Final
+    </div>
+     <div class="clearfix"></div>
+  </div>
+  <div ng-repeat="aluno in mc.alunos.alunos">
+        
+  <label ng-class="{ 'text-danger': mc.checkMedia(aluno.testes)}" >{{mc.calculaMedia(aluno.testes)}}</label>   {{mc.nota}}</div>
+
+  <div ng-repeat="aluno in mc.alunos.alunos">
+        
+  <label  >   {{aluno.trabalhos}}</label></div>
+
+
+</div>
