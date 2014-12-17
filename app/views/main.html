@@ -1,12 +1,12 @@
 
 
-<div class="row marketing" ng-controller="MainCtrl as mc">
+<div class="col-md-12" ng-controller="MainCtrl as mc">
   
-  <div>
+
   <table class="table table-hover">
     <thead>
         <tr>
-            <th>Número</th>
+            <th >Número</th>
             <th>Nome</th>
             <th>Testes</th>
             <th>trabalhos</th>
@@ -18,24 +18,25 @@
             <td>{{aluno.nome}}</td>
             <td >{{aluno.trabalhos}}</td>
             <td>{{aluno.testes}}</td>
+
         </tr>
     </tbody>
-  </table>
-     
-  </div>
-  <div class="container bg-info" style="padding:5px;" ng-repeat="aluno in mc.alunos.alunos">
+  </table>   
+
+
+  <div class="col-md-12 container bg-info" style="padding:5px;" ng-repeat="aluno in mc.alunos.alunos">
     
-    <div class="col-md-5" style="background-color:red;">
+    <div class="col-md-4" style="background-color:red;">
       <div class="pull-left"><span class="text-left">{{aluno.numero}}</span></div>
       <div >{{aluno.nome}}</div>   
     </div>
     <div class="col-md-2" style="background-color:green">
      testes
     </div>
-    <div class="col-md-3" style="background-color:yellow"  ng-controller="TrabalhoctrlCtrl as tr">
+    <div class="col-md-4" style="background-color:yellow"  ng-controller="TrabalhoctrlCtrl as tr">
       <div class="pull-left" ng-repeat="t in aluno.trabalhos track by $index" >
          
-          <input  class="text-center"  style='width:2em' type="text" ng-model="t.nota" name="trab"  required>      
+          <input  class="text-center"  style='width:2em ;height:1.5em' type="text" ng-model="t.nota" name="trab"  required>      
          
       </div> 
        <div class="pull-left"> 
@@ -46,12 +47,13 @@
       <button class="glyphicon glyphicon-plus pull-right" style="color:green;" ng-click="tr.addTestes(aluno)" >
       </button>
       
-    
+    <div class="clearfix"></div>
     </div>
+    
     <div class="col-md-2" style="background-color:orange">
      Final
     </div>
-     <div class="clearfix"></div>
+     
   </div>
   <div ng-repeat="aluno in mc.alunos.alunos">
         
