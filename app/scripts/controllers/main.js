@@ -17,12 +17,12 @@ angular.module('nerdgradeApp')
 
     this.nota='';
     this.alunos =
-	{alunos: [
+	[
 	   { numero: '1',
 	    nome: 'Paulo Jose Abreu Martins',
 	    testes: [12,2],
 	    trabalhos: [{nota:10},{nota:20
-	    }]
+	    },{nota:19}]
   },
 	{
 		numero: '2',
@@ -31,7 +31,7 @@ angular.module('nerdgradeApp')
 		trabalhos: [{nota:1},{nota:2
 	    }]
 	}
-]};
+];
 	this.calculaMedia= function(t){
 		var nota = (t[0] + t[1])/2;
 		if(nota<6)
@@ -57,7 +57,11 @@ angular.module('nerdgradeApp')
 			
 		};
 
-	
+	this.teste = function(){
+
+			$window.alert('ola');
+			
+		};
 
 	
   }]);

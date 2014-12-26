@@ -53,11 +53,34 @@ angular.module('nerdgradeApp')
 		count = Object.keys(a.trabalhos).length;
 		$window.alert('tr1- ' + a[0] + '  tr2- ' + a[1] + 'tasmanha='+ count);
 		console.log(a.trabalhos);
-		this.novo=this.valorSel.n;
+		this.novo={nota:+this.valorSel.n};
 		a.trabalhos.push(this.novo);
 		this.traba =a.trabalhos;
 		console.log(this.traba);
 		
+	};
+
+	this.calcMedia= function(a){
+		var count = Object.keys(a.trabalhos).length;
+		var trabalhos=a.trabalhos;
+		var soma=0;
+		console.log(a.trabalhos);
+		for(var i =0 ; i<count;i++)
+		{
+			soma += trabalhos[i].nota;
+		}
+		
+		console.log('a media e: '+soma/count);
+		return (soma/count).toFixed(2);
+	};
+
+	this.checkMedia= function(a){
+		if(this.calcMedia(a)<10.00)
+		{
+		return true;
+		}
+		else 
+			{return false;}
 	};	
 
   }]);

@@ -1,6 +1,54 @@
 
+<row>
+    <div class="col-md-12">
+        <input placeholder="procurar" ng-model="searchText.$">
+  
+    </div>
 
-<div class="col-md-12" ng-controller="MainCtrl as mc">
+</row>
+<row>
+    <div class="col-md-12 bg-info" ng-controller="MainCtrl as mc">
+        <div class="col-md-12" style="padding:5px;" ng-repeat="aluno in mc.alunos | filter:searchText">
+            <div class="col-md-4 bg-primary" >
+                <div class="pull-left col-md-12">
+                    <span ng-click="mc.teste()" ><span class="glyphicon glyphicon-user aponta"></span></span> 
+                    <span class="text-left ">{{aluno.numero}} - {{aluno.nome}}</span>
+                </div>
+                <div class="clearfix"></div>  
+             </div>
+            <div class="col-md-2" style="background-color:green">
+                testes
+            </div>
+            <!-- Notas dos trabalhos -->
+            <div class="col-md-4"  style="background-color:yellow"  ng-controller="TrabalhoctrlCtrl as tr"><p>Trabalhos: <span ng-class="{ 'text-danger': tr.checkMedia(aluno)}">{{tr.calcMedia(aluno)}}</span></p>
+                <div class="col-md-4">
+                    <div  ng-repeat="(k,v) in aluno.trabalhos track by $index" >
+             
+                        <input  class="col-md-12 text-center input-sm" type="text" style='width:4em ;height:2em' ng-model="aluno.trabalhos[k].nota ">      
+                    </div>
+
+                </div>
+                <div class="col-md-8"> 
+                        <select  class="col-md-6 pull-left" ng-model="tr.valorSel" ng-options="valor.n for valor in tr.valores">
+                        </select>
+                    
+                    <div class="pull-right">
+                        <button class="glyphicon glyphicon-plus pull-right" style="color:green; width:2em " ng-click="tr.addTestes(aluno)" >
+                        </button>
+                    </div>
+                        
+                    
+                    <div class="clearfix"></div>  
+                </div>
+                
+            </div>
+
+        </div>
+        
+    </div>
+</row>
+
+<!-- <div class="col-md-12" ng-controller="MainCtrl as mc">
   
 
   <table class="table table-hover">
@@ -13,7 +61,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-class="{'bg-warning': mc.checkMedia(aluno.testes)}" ng-repeat="aluno in mc.alunos.alunos">
+        <tr ng-class="{'bg-warning': mc.checkMedia(aluno.testes)}" ng-repeat="aluno in mc.alunos">
             <td>{{aluno.numero}} </td>
             <td>{{aluno.nome}}</td>
             <td >{{aluno.trabalhos}}</td>
@@ -21,47 +69,53 @@
 
         </tr>
     </tbody>
-  </table>   
+  </table> 
+  <label>Testes</label> <input ng-model="searchTest">
+  <label>Trabalhos</label> <input ng-model="perTrabalhos"> </br> 
+  <row>
 
-
-  <div class="col-md-12 container bg-info" style="padding:5px;" ng-repeat="aluno in mc.alunos.alunos">
+  <label>Procura:</label> <input value="procurar" ng-model="searchText">
+  </row>  
+  <div class="col-sm-12 container bg-info" style="padding:5px;" ng-repeat="aluno in mc.alunos | filter:searchText">
     
-    <div class="col-md-4" style="background-color:red;">
+    <div class="col-sm-4" style="background-color:red;">
       <div class="pull-left"><span class="text-left">{{aluno.numero}}</span></div>
       <div >{{aluno.nome}}</div>   
     </div>
-    <div class="col-md-2" style="background-color:green">
+    <div class="col-sm-2" style="background-color:green">
      testes
     </div>
-    <div class="col-md-4" style="background-color:yellow"  ng-controller="TrabalhoctrlCtrl as tr">
-      <div class="pull-left" ng-repeat="t in aluno.trabalhos track by $index" >
+    <div class="col-sm-4" style="background-color:yellow"  ng-controller="TrabalhoctrlCtrl as tr">
+      <div class="pull-left" ng-repeat="(k,v) in aluno.trabalhos track by $index " >
          
-          <input  class="text-center"  style='width:2em ;height:1.5em' type="text" ng-model="t.nota" name="trab"  required>      
+          <input  class="text-center"  style='width:2em ;height:1.5em' type="text" ng-model="aluno.trabalhos[k].nota " name="trab">      
          
       </div> 
        <div class="pull-left"> 
-     <!--  <input  class="text-center " style='width:2em' type="text" ng-model="tr.novo" name="novo">  -->
+     <input  class="text-center " style='width:2em' type="text" ng-model="tr.novo" name="novo">  
        <select ng-model="tr.valorSel" ng-options="valor.n for valor in tr.valores"></select>
        </div>
       
-      <button class="glyphicon glyphicon-plus pull-right" style="color:green;" ng-click="tr.addTestes(aluno)" >
+      <button class="glyphicon glyphicon-plus" style="color:green; width:2em " ng-click="tr.addTestes(aluno)" >
       </button>
       
     <div class="clearfix"></div>
     </div>
     
-    <div class="col-md-2" style="background-color:orange">
+    <div class="col-sm-2" style="background-color:orange">
      Final
     </div>
      
   </div>
+  <div class="clearfix"></div>
   <div ng-repeat="aluno in mc.alunos.alunos">
         
   <label ng-class="{ 'text-danger': mc.checkMedia(aluno.testes)}" >{{mc.calculaMedia(aluno.testes)}}</label>   {{mc.nota}}</div>
 
   <div ng-repeat="aluno in mc.alunos.alunos">
         
-  <label  >   {{aluno.trabalhos}}</label></div>
+  <label  >   {{aluno.trabalhos}}</label>
+  </div>
 
 
-</div>
+</div> -->
